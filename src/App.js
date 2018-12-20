@@ -31,7 +31,7 @@ class App extends Component {
     //Проверяем введено ли в поле "Город" что-либо, если нет, то сообщаем это пользователю
     if (city) {
       //Получаем JSON файл погоды
-      const apiUrl = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY_WEATHER}&units=metric`);
+      const apiUrl = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY_WEATHER}&units=metric`);
       const data = await apiUrl.json();
 
       //Проверяем существует ли данный город в базе, если нет, то выдаем соответствующую ошибку
@@ -49,7 +49,7 @@ class App extends Component {
         });
       } else {
         //Получаем JSON файл (актуальное время для определенного города)
-        const apiUrlMap = await fetch(`http://api.timezonedb.com/v2.1/get-time-zone?key=${API_KEY_MAP}&format=json&by=position&lat=${data.coord.lat}&lng=${data.coord.lon}`);
+        const apiUrlMap = await fetch(`https://api.timezonedb.com/v2.1/get-time-zone?key=${API_KEY_MAP}&format=json&by=position&lat=${data.coord.lat}&lng=${data.coord.lon}`);
         const MapJson = await apiUrlMap.json();
 
         //Берем дату и предобразуем в нужный нам вид (День недели + время)
